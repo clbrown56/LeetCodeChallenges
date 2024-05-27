@@ -1,0 +1,48 @@
+"""
+Given a string s, find the length of the longest 
+substring without repeating characters.
+
+:type s: str
+:rtype: int
+"""
+
+class Solution(object):
+    # Method used to remove previous instance of the target letter
+
+    def newList(self, string, letter):
+        letterNotFound = True
+        final = []
+        for i in string:
+            # Does not insert any until the first letter is found
+            if letterNotFound:
+                if i == letter:
+                    letterNotFound = False
+            else:
+                # Once found, the rest are inserted in the same order
+                final.insert(len(final), i)
+                
+        # Inserts the last instance of the letter
+        final.insert(len(final), letter)
+        return final
+
+            
+
+    def lengthOfLongestSubstring(self, s):
+        #Current substring
+        curr = []
+
+        #Longest substring
+        top = []
+
+        for i in s:
+            #If the letter is not in the current, add it to current
+            #Replace longest if need be
+            if not (i in curr):
+                curr.insert(len(curr), i)
+                if (len(curr) > len(top)):
+                    top = curr
+            else:
+                # Removes the previous instance of the letter
+                curr = self.newList(curr, i)
+        # Return final length of longest substring
+        return len(top)
