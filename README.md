@@ -1,0 +1,1 @@
+The following are the challenges I've completed in Leetcode. The purpose of this repository is to archive and look for ways to improve on my problem solving approaches. Additionally, finding what skills I'm comfortable building with and what I need to continue to work on. 
